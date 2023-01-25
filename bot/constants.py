@@ -2,7 +2,7 @@
 
 TOKEN = '1378118340:AAHSRVC0WFc3LYupQmSxNTKCuF3SLC4UFHk'
 # BASE_URL = "https://wisdom.jamgirov.uz"
-BASE_URL = "https://14c2-213-230-114-142.eu.ngrok.io"
+BASE_URL = "https://railway.app/project/c701b2aa-6336-4a86-8a2e-e4163f064366/service/f4238520-991d-4724-8f67-5ea0c1f51547?id=dfe69570-e58f-4999-91ae-da5187de9abb"
 BOT_USERNAME = "wisdomuz_bot"
 
 HOW_TO_USE_LINK = "https://telegra.ph/Wisdom-edubot-Qollanmasi-02-05"
