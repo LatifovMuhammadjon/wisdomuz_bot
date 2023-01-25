@@ -1,6 +1,6 @@
 # init data start
 
-TOKEN = '1378118340:AAHSRVC0WFc3LYupQmSxNTKCuF3SLC4UFHk'
+TOKEN = '5809984859:AAE3OIWBM2u99nhTIbkicBE5GFba-o-fRXA'
 # BASE_URL = "https://wisdom.jamgirov.uz"
 BASE_URL = "https://wisdomuzbot-production.up.railway.app"
 BOT_USERNAME = "wisdomuz_bot"
