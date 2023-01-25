@@ -1,0 +1,30 @@
+{% extends "admin/change_form.html" %}
+
+{% block after_field_sets %}
+{{ block.super }}
+<div class="form-row">
+    <h3>Tasodifiy tanlangan so'zlar</h3>
+    <ul>
+        {% for word in original.words %}
+        <li>
+            <b>{{word.word}}</b> <i>{{word.pronunciation}}</i> - <u>{{word.translation}}</u>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<hr/>
+<div class="form-row">
+    <h3>Qatnashchilar</h3>
+    <ul>
+        {% for participant in original.participants.all %}
+        <li>
+            <b>{{participant.participant.full_name}}</b>
+            <ul>
+                <li>To'g'ri javoblari: <b>{{participant.true_answers}} ta</b></li>
+                <li>Sarflagan vaqti: <b>{{participant.battle_time}} sekund</b></li>
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

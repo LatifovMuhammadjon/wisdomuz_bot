@@ -1,0 +1,19 @@
+{% extends "admin/change_form.html" %}
+
+{% block admin_change_form_document_ready %}
+{{ block.super }}
+<hr/>
+<div class="form-row">
+    <h3>Biriktirilgan mashqlar</h3>
+    <ul>
+        {% for exercise in original.exercises.all %}
+        <li>
+            <a href="{% url 'admin:bot_exercise_change' exercise.id %}">
+                <b>{{exercise.id}})</b> <i>{{exercise.question}}</i> - <u>{{exercise.answer}}</u>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<hr/>
+{% endblock %}
