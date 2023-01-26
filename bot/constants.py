@@ -3,7 +3,7 @@
 TOKEN = '5809984859:AAE3OIWBM2u99nhTIbkicBE5GFba-o-fRXA'
 # BASE_URL = "https://wisdom.jamgirov.uz"
 BASE_URL = "https://wisdomuzbot-production.up.railway.app"
-BOT_USERNAME = "wisdomuz_bot"
+BOT_USERNAME = "wisdom_uzb_bot"
 
 HOW_TO_USE_LINK = "https://telegra.ph/Wisdom-edubot-Qollanmasi-02-05"
 
