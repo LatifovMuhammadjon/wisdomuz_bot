@@ -4,7 +4,7 @@
 TOKEN = '5809984859:AAE3OIWBM2u99nhTIbkicBE5GFba-o-fRXA'
 # BASE_URL = "https://wisdom.jamgirov.uz"
 # BASE_URL = "https://wisdomuzbot-production.up.railway.app"
-BASE_URL = "https://8d93-213-230-102-107.eu.ngrok.io"
+BASE_URL = "https://wisdomuzbot-production.up.railway.app/"
 
 BOT_USERNAME = "wisdom_uzb_bot"
 
@@ -12,6 +12,7 @@ HOW_TO_USE_LINK = "https://telegra.ph/Wisdom-edubot-Qollanmasi-02-05"
 
 CHAT_ID_WISDOM = -1001672195679
 CHAT_ID_FOR_NOTIFIER = -1001351409192
+
 
 BONUS_FOR_NEW_USER = 3
 BONUS_FOR_MEMBERSHIP_TO_CHANNEL = 5
