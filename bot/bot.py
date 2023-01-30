@@ -258,22 +258,22 @@ def rating_handler(message: Message, user: User):
                 ) for index, period in enumerate(bot.text.stat_filter_by_time)
             ]
         )
-        top = sorted(User.filter(is_banned=False, is_member=True), key=lambda u: u.daily, reverse=True)
-        place = top.index(user)
-
-
-
-
-        bot.send_message(
-            user.user_id,
-            bot.text.rating.format(
-                period=bot.text.stat_filter_by_time[0],
-                top="\n".join([f"{bot.text.places[index]} {us.level} <b>{us}</b> - {us.daily} 💎" for index, us in enumerate(top[:10])]),
-                me=f"\n\n{place + 1}) {user.level} <b>{user}</b> - {user.daily} 💎" if place >= 10 else ''
-            ),
-            reply_markup=inline_markup,
-        )
-
+    top = User.get_rating(4)
+    me=""
+    for dic in top:
+        if dic["user_id"]==user.user_id:
+            me=f"\n\n{user.level} {user} {dic['dcount']}"
+    
+    bot.send_message(
+        user.user_id,
+        bot.text.rating.format(
+            period=bot.text.stat_filter_by_time[0],
+            top="\n".join(
+                [ f"{bot.text.places[index]} {User.get(id=res['user_id']).level} <b>{ User.get(id=res['user_id'])}</b> - { res['dcount'] } 💎" for index , res in enumerate(top) ]),
+                me=me
+        ),
+        reply_markup=inline_markup,
+    )
 
 @bot.message_handler(commands=['vocabulary'])
 @bot.message_handler(regexp='^🎯 ')
@@ -1197,15 +1197,8 @@ def request_for_revenge(user: User, query: CallbackQuery, message: Message, batt
 
 
 def select_period_for_rating(user: User, query: CallbackQuery, message: Message, period_id: int):
-    key = lambda u: u.daily
-    if period_id == 1:
-        key = lambda u: u.weakly
-    elif period_id == 2:
-        key = lambda u: u.monthly
-    elif period_id == 3:
-        key = lambda u: u.yearly
-    elif period_id == 4:
-        key = lambda u: u.diamonds
+    
+    top = User.get_rating(period_id)
     inline_markup = InlineKeyboardMarkup()
     inline_markup.add(
         *[
@@ -1215,15 +1208,17 @@ def select_period_for_rating(user: User, query: CallbackQuery, message: Message,
             ) for index, period in enumerate(bot.text.stat_filter_by_time)
         ]
     )
-    top = sorted(User.filter(is_banned=False, is_member=True), key=key, reverse=True)
-    place = top.index(user)
+    me=""
+    for dic in top:
+        if dic["user_id"]==user.user_id:
+            me=f"\n\n{user.level} {user} {dic['dcount']}"
     try:
-        bot.edit_message_text(
+         bot.edit_message_text(
             bot.text.rating.format(
                 period=bot.text.stat_filter_by_time[period_id],
                 top="\n".join(
-                    [f"{bot.text.places[index]} {us.level} <b>{us}</b> - {[us.daily, us.weakly, us.monthly, us.yearly, us.diamonds][period_id]} 💎" for index, us in enumerate(top[:10])]),
-                me=f"\n\n{place + 1}) {user.level} <b>{user}</b> - {[user.daily, user.weakly, user.monthly, user.yearly, user.diamonds][period_id]} 💎" if place >= 10 else ''
+                    [ f"{bot.text.places[index]} {User.get(id=res['user_id']).level} <b>{ User.get(id=res['user_id'])}</b> - { res['dcount'] } 💎" for index , res in enumerate(top) ]),
+                    me=me
             ),
             message.chat.id,
             message.message_id,

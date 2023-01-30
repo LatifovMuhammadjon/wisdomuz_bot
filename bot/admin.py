@@ -10,7 +10,7 @@ from django import forms
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User as Staff, Group
 
-from .models import User, Book, Word, Exercise, Battle, Channel, Provider, Payment, Post, Count, MESSAGE, TOKEN
+from .models import Pocket,User, Book, Word, Exercise, Battle, Channel, Provider, Payment, Post, Count, MESSAGE, TOKEN
 
 admin.site.site_header = "Boshqaruv paneli"
 admin.site.index_title = "@wisdom_edubot"
@@ -334,7 +334,7 @@ class PaymentAdmin(admin.ModelAdmin):
 
     get_amount.short_description = "Miqdori"
 
-
+admin.site.register(Pocket)
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_time'

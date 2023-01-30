@@ -1,7 +1,7 @@
 from django.db.models import Model, PositiveIntegerField, CharField, PositiveSmallIntegerField, DateTimeField, DateField, \
     ForeignKey, ManyToManyField, TextField, BooleanField, IntegerField, CASCADE, SET_NULL, Count
 from django.utils import timezone
-
+from django.db.models import Sum
 from random import shuffle, randint, choice
 
 from .constants import TOKEN, STEP_MAIN_MENU, BONUS_FOR_MEMBERSHIP_TO_CHANNEL, BONUS_FOR_NEW_USER, MESSAGE
@@ -100,6 +100,25 @@ class User(AbstractModel):
         self.energy += amount
         self.save()
 
+    @classmethod
+    def get_rating(cls,period_id=0):
+        now = timezone.now()
+        top = []
+        if period_id == 4:
+            result = Pocket.objects.values("user_id").annotate(dcount=Sum("diamonds")).order_by("-dcount")
+        elif period_id == 1:
+            result=Pocket.objects.values("user_id").filter(date__gte=now-timezone.timedelta(days=now.weekday())).annotate(dcount=Sum("diamonds")).order_by("-dcount")
+        elif period_id == 2:
+            result=Pocket.objects.values("user_id").filter(date__year=now.year, date__month=now.month).annotate(dcount=Sum("diamonds")).order_by("-dcount")
+        elif period_id == 3:
+            result=Pocket.objects.values("user_id").filter(date__year=timezone.now().year).annotate(dcount=Sum("diamonds")).order_by("-dcount")
+        else:
+            result=Pocket.objects.values("user_id").filter(date__lte=now, date__gte=now).annotate(dcount=Sum("diamonds")).order_by("-dcount")
+
+        return result[:10]
+
+        
+        
     @property
     def pocket(self):
         pocket: Pocket = Pocket.get(user=self, date=timezone.now())

@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
-import psycopg2
+# import psycopg2
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -86,13 +86,10 @@ DATABASES = {
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': 'railway',
 #         'USER': 'postgres',
-#         'PASSWORD': 'EPmvf0Edaou07UWJcVCu',
-#         'HOST': 'containers-us-west-94.railway.app',
-#         'PORT': '6733',
-#     },
-#     'OPTIONS': {
-#         'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
-#     },
+#         'PASSWORD': 'dD5qmob2FpBmLjsHYomG',
+#         'HOST': 'containers-us-west-102.railway.app',
+#         'PORT': '5832',
+#     }
 # }
 
 # Password validation
