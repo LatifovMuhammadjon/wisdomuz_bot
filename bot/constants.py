@@ -1,7 +1,7 @@
 # init data start
 
-# TOKEN = '1696068501:AAF2v3BwwEdmfxAEmnqpHa8ksckKqEwqxXc'
-TOKEN = '5809984859:AAE3OIWBM2u99nhTIbkicBE5GFba-o-fRXA'
+TOKEN = '1696068501:AAF2v3BwwEdmfxAEmnqpHa8ksckKqEwqxXc'
+# TOKEN = '5809984859:AAE3OIWBM2u99nhTIbkicBE5GFba-o-fRXA'
 # BASE_URL = "https://wisdom.jamgirov.uz"
 # BASE_URL = "https://wisdomuzbot-production.up.railway.app"
 BASE_URL = "https://wisdomuzbot-production.up.railway.app/"
