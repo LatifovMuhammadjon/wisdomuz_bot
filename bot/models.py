@@ -109,7 +109,7 @@ class User(AbstractModel):
         elif period_id == 1:
             result=Pocket.objects.values("user_id").filter(date__gte=now-timezone.timedelta(days=now.weekday())).annotate(dcount=Sum("diamonds")).order_by("-dcount")[:10]
         elif period_id == 2:
-            result=Pocket.objects.values("user_id").filter(date__gte=now-timezone.timedelta(days=30)).annotate(dcount=Sum("diamonds")).order_by("-dcount")[:10]
+            result=Pocket.objects.values("user_id").filter(date__year=now.year, date__month=now.month).annotate(dcount=Sum("diamonds")).order_by("-dcount")[:10]
         elif period_id == 3:
             result=Pocket.objects.values("user_id").filter(date__year=timezone.now().year).annotate(dcount=Sum("diamonds")).order_by("-dcount")[:10]
         else:
