@@ -115,6 +115,7 @@ class User(AbstractModel):
         else:
             result=Pocket.objects.values("user_id").filter(date__lte=now, date__gte=now).annotate(dcount=Sum("diamonds")).order_by("-dcount")[:10]
 
+        result = [ i for i in result ]
         # if len(result) < 10:
         #     users = User.objects.all()[:10]
         #     while len(result) < 10:
