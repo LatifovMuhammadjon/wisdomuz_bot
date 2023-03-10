@@ -267,7 +267,7 @@ def rating_handler(message: Message, user: User):
     bot.send_message(
         user.user_id,
         bot.text.rating.format(
-            period=bot.text.stat_filter_by_time[0],
+            period=bot.text.stat_filter_by_time[4],
             top="\n".join(
                 [ f"{bot.text.places[index]} {User.get(id=res['user_id']).level} <b>{ User.get(id=res['user_id'])}</b> - { res['dcount'] } 💎" for index , res in enumerate(top) ]),
                 me=me
