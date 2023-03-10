@@ -6,7 +6,7 @@ TOKEN = '1696068501:AAF2v3BwwEdmfxAEmnqpHa8ksckKqEwqxXc'
 # BASE_URL = "https://wisdomuzbot-production.up.railway.app"
 BASE_URL = "https://wisdomuzbot-production.up.railway.app"
 
-BOT_USERNAME = "wisdom_uzb_bot"
+BOT_USERNAME = "wisdomuz_bot"
 
 HOW_TO_USE_LINK = "https://telegra.ph/Wisdom-edubot-Qollanmasi-02-05"
 

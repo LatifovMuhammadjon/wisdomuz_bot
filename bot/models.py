@@ -1,5 +1,5 @@
 from django.db.models import Model, PositiveIntegerField, CharField, PositiveSmallIntegerField, DateTimeField, DateField, \
-    ForeignKey, ManyToManyField, TextField, BooleanField, IntegerField, CASCADE, SET_NULL, Count
+    ForeignKey, ManyToManyField, TextField, BooleanField, IntegerField, CASCADE, SET_NULL, Count,BigIntegerField
 from django.utils import timezone
 from django.db.models import Sum
 from random import shuffle, randint, choice
@@ -45,7 +45,7 @@ class AbstractModel(Model):
 
 
 class User(AbstractModel):
-    user_id = PositiveIntegerField(
+    user_id = BigIntegerField(
         unique=True,
         verbose_name="Foydalanuvchi IDsi"
     )
